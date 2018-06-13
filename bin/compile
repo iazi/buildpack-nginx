@@ -4,7 +4,7 @@ set -eo pipefail; [[ $TRACE ]] && set -x
 
 NGINX_VERSION="1.10.1"
 NGINX_TARBALL="nginx-${NGINX_VERSION}.tar.gz"
-PCRE_VERSION="8.42"
+PCRE_VERSION="8.38"
 PCRE_TARBALL="pcre-${PCRE_VERSION}.tar.gz"
 SIGIL_VERSION="0.4.0"
 SIGIL_TARBALL="sigil_${SIGIL_VERSION}_Linux_x86_64.tgz"
@@ -75,7 +75,7 @@ cp -r sigil "$BUILD_DIR/sigil/"
 
 cd "nginx-${NGINX_VERSION}"
 if [[ ! -f "${CACHE_DIR}/bin/nginx" ]]; then
-  echo "-----> Compiling static nginx binary"
+  echo "-----> Compiling static nginx binary ->"
   mkdir "$BUILD_DIR/nginx"
   suppress ./configure \
     --with-cpu-opt=generic \
@@ -84,7 +84,7 @@ if [[ ! -f "${CACHE_DIR}/bin/nginx" ]]; then
     --sbin-path=. \
     --pid-path=./nginx.pid \
     --conf-path=./nginx.conf \
-    --with-ld-opt="-static" \
+    --with-ld-opt="-static -lpcre -lpthread" \
     --with-http_stub_status_module \
     --with-http_gzip_static_module \
     --with-file-aio \
