@@ -48,7 +48,7 @@ cd "$CACHE_DIR"
 
 if [[ ! -d "${NGINX_TARBALL%.tar.gz}" ]]; then
   echo "-----> Download and unzip nginx"
-  curl -sSL "http://nginx.org/download/${NGINX_TARBALL}" -o "${NGINX_TARBALL}"
+  curl -sSL "https://nginx.org/download/${NGINX_TARBALL}" -o "${NGINX_TARBALL}"
   tar xzf "${NGINX_TARBALL}" && rm -f "${NGINX_TARBALL}"
 fi
 
