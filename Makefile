@@ -5,9 +5,6 @@ ifeq ($(shell uname),Darwin)
 else
 	sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse'
 	sudo apt-get update -qq && sudo apt-get install -qq -y shellcheck
-	
-	# installs, work.
-	RUN sudo apt-get install libx11-xcb1
 endif
 endif
 
